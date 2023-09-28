@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var pressed = 0
+    @State private var noBounce = false
+    
     var body: some View {
         ZStack {
             LinearGradient(colors: [.blue,.teal], startPoint: .topLeading, endPoint: .bottomTrailing)
@@ -23,6 +26,7 @@ struct ContentView: View {
                     Image(systemName: "cloud.sun.rain.fill")
                         .font(.system(size: 100))
                         .symbolRenderingMode(.multicolor)
+                        .symbolEffect(.bounce, value: pressed)
                     
                     Text("76°")
                         .font(.system(size: 70, weight: .medium))
@@ -39,11 +43,20 @@ struct ContentView: View {
                 .foregroundColor(.white)
                 .padding()
                 .symbolRenderingMode(.multicolor)
+                .symbolEffect(.bounce, value: pressed)
                 
                 Spacer()
                 
+                Toggle("Disable Bounce Animation?", isOn: $noBounce)
+                    .foregroundColor(.white)
+                    .padding()
+                
                 Button("Change Day Time", systemImage: "gear") {
-                    print("Hello Jordan!")
+                    if noBounce == true {
+                        // Do Nothing
+                    } else {
+                        pressed += 1
+                    }
                 }
                 .font(.title3)
                 .foregroundColor(.white)
@@ -51,6 +64,7 @@ struct ContentView: View {
                 .frame(width: 280, height: 50)
                 .background(.black)
                 .cornerRadius(10)
+                .symbolEffect(.bounce, value: pressed)
             }
         }
     }
