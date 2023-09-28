@@ -14,11 +14,7 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            if isNight == true {
-                BackgroundView(topColor: .black, bottomColor: .blue)
-            } else {
-                BackgroundView(topColor: .blue, bottomColor: .teal)
-            }
+            BackgroundView(topColor: isNight ? .black : .blue, bottomColor: isNight ? .blue : .teal)
             
             VStack {
                 Text("Miami, Florida")
@@ -27,19 +23,11 @@ struct ContentView: View {
                     .padding()
                 
                 VStack(spacing: 10) {
-                    if isNight == true {
-                        Image(systemName: "moon.stars.fill")
-                            .frame(width: 175, height: 175)
-                            .font(.system(size: 100))
-                            .symbolRenderingMode(.multicolor)
-                            .symbolEffect(.bounce, value: pressed)
-                    } else {
-                        Image(systemName: "cloud.sun.rain.fill")
-                            .frame(width: 175, height: 175)
-                            .font(.system(size: 100))
-                            .symbolRenderingMode(.multicolor)
-                            .symbolEffect(.bounce, value: pressed)
-                    }
+                    Image(systemName: isNight ? "moon.stars.fill" : "cloud.sun.rain.fill")
+                        .frame(width: 175, height: 175)
+                        .font(.system(size: 100))
+                        .symbolRenderingMode(.multicolor)
+                        .symbolEffect(.bounce, value: pressed)
                     
                     Text("76°")
                         .font(.system(size: 70, weight: .medium))
