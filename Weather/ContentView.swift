@@ -9,13 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var pressed = 0
-    @State private var pressedBG = true
+    @State private var pressedBG = false
     @State private var noBounce = false
     
     var body: some View {
         ZStack {
             if pressedBG == true {
-                BackgroundView(topColor: .black, bottomColor: .gray)
+                BackgroundView(topColor: .black, bottomColor: .blue)
             } else {
                 BackgroundView(topColor: .blue, bottomColor: .teal)
             }
@@ -27,10 +27,19 @@ struct ContentView: View {
                     .padding()
                 
                 VStack(spacing: 10) {
-                    Image(systemName: "cloud.sun.rain.fill")
-                        .font(.system(size: 100))
-                        .symbolRenderingMode(.multicolor)
-                        .symbolEffect(.bounce, value: pressed)
+                    if pressedBG == true {
+                        Image(systemName: "moon.stars.fill")
+                            .frame(width: 175, height: 175)
+                            .font(.system(size: 100))
+                            .symbolRenderingMode(.multicolor)
+                            .symbolEffect(.bounce, value: pressed)
+                    } else {
+                        Image(systemName: "cloud.sun.rain.fill")
+                            .frame(width: 175, height: 175)
+                            .font(.system(size: 100))
+                            .symbolRenderingMode(.multicolor)
+                            .symbolEffect(.bounce, value: pressed)
+                    }
                     
                     Text("76°")
                         .font(.system(size: 70, weight: .medium))
