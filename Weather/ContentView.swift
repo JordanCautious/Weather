@@ -9,12 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var pressed = 0
+    @State private var pressedBG = true
     @State private var noBounce = false
     
     var body: some View {
         ZStack {
-            LinearGradient(colors: [.blue,.teal], startPoint: .topLeading, endPoint: .bottomTrailing)
-                .edgesIgnoringSafeArea(.all)
+            if pressedBG == true {
+                BackgroundView(topColor: .black, bottomColor: .gray)
+            } else {
+                BackgroundView(topColor: .blue, bottomColor: .teal)
+            }
             
             VStack {
                 Text("Miami, Florida")
@@ -52,6 +56,8 @@ struct ContentView: View {
                     .padding()
                 
                 Button("Change Day Time", systemImage: "gear") {
+                    pressedBG.toggle()
+                
                     if noBounce == true {
                         // Do Nothing
                     } else {
