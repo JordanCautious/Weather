@@ -9,12 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var pressed = 0
-    @State private var pressedBG = false
+    @State private var isNight = false
     @State private var noBounce = false
     
     var body: some View {
         ZStack {
-            if pressedBG == true {
+            if isNight == true {
                 BackgroundView(topColor: .black, bottomColor: .blue)
             } else {
                 BackgroundView(topColor: .blue, bottomColor: .teal)
@@ -27,7 +27,7 @@ struct ContentView: View {
                     .padding()
                 
                 VStack(spacing: 10) {
-                    if pressedBG == true {
+                    if isNight == true {
                         Image(systemName: "moon.stars.fill")
                             .frame(width: 175, height: 175)
                             .font(.system(size: 100))
@@ -65,7 +65,7 @@ struct ContentView: View {
                     .padding()
                 
                 Button("Change Day Time", systemImage: "gear") {
-                    pressedBG.toggle()
+                    isNight.toggle()
                 
                     if noBounce == true {
                         // Do Nothing
