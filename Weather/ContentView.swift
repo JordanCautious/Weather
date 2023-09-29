@@ -29,7 +29,7 @@ struct ContentView: View {
                         .symbolRenderingMode(.multicolor)
                         .symbolEffect(.bounce, value: pressed)
                     
-                    Text("76°")
+                    Text(isNight ? "64°" : "76°")
                         .font(.system(size: 70, weight: .medium))
                         .foregroundColor(.white)
                 }
