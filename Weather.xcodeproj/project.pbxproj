@@ -56,8 +56,8 @@
 			isa = PBXGroup;
 			children = (
 				ECED02CC2AC61BB200110090 /* WeatherApp.swift */,
-				ECED02CE2AC61BB200110090 /* ContentView.swift */,
 				ECED02DC2AC63A1500110090 /* BackgroundView.swift */,
+				ECED02CE2AC61BB200110090 /* ContentView.swift */,
 				ECED02DA2AC629B700110090 /* DayView.swift */,
 				ECED02D02AC61BB400110090 /* Assets.xcassets */,
 				ECED02D22AC61BB400110090 /* Preview Content */,
